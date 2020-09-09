@@ -8,12 +8,12 @@ export default function App() {
     const [todos, setTodos] = useState([]);
 
     const addTodo = (title) => {
-        const newTodo = {
-            id: Date.now().toString(),
-            title: title
-        };
+        // const newTodo = {
+        //     id: Date.now().toString(),
+        //     title: title
+        // };
 
-        setTodos(todos.concat([newTodo]))
+        // setTodos(todos.concat([newTodo]))
         // setTodos((prevTodos) => {
         //     return [
         //         ...prevTodos,
@@ -21,10 +21,10 @@ export default function App() {
         //     ]
         // })
 
-        // setTodos(prev => [...prev, {
-        //     id: Date.now().toString(),
-        //     title
-        // }])
+        setTodos(prev => [...prev, {
+            id: Date.now().toString(),
+            title
+        }])
     };
 
     return (

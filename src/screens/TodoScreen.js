@@ -3,20 +3,28 @@ import {StyleSheet, View, Text, Button} from 'react-native';
 import {THEME} from "../theme";
 import {AppCart} from "../components/ui/AppCart";
 
-export const TodoScreen = ({goBack, todo}) => {
+export const TodoScreen = ({goBack, todo, onRemove}) => {
     return (
         <View>
             <AppCart style={styles.cart}>
                 <Text style={styles.title}>{todo.title}</Text>
-                <Button title='Ред.' />
+                <Button title='Ред.'/>
             </AppCart>
 
             <View style={styles.buttons}>
                 <View style={styles.button}>
-                    <Button title="Назад" onPress={goBack} color={THEME.GREY_COLOR}/>
+                    <Button
+                        title="Назад"
+                        onPress={goBack}
+                        color={THEME.GREY_COLOR}
+                    />
                 </View>
                 <View style={styles.button}>
-                    <Button title="Удалить" color={THEME.DANGER_COLOR} onPress={() => console.log('To Remove')}/>
+                    <Button
+                        title="Удалить"
+                        color={THEME.DANGER_COLOR}
+                        onPress={() => onRemove(todo.id)}
+                    />
                 </View>
             </View>
         </View>

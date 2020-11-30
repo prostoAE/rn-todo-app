@@ -4,12 +4,22 @@ import {THEME} from "../theme";
 import {AppCart} from "../components/ui/AppCart";
 import {EditModal} from "../components/EditModal";
 
-export const TodoScreen = ({goBack, todo, onRemove}) => {
+export const TodoScreen = ({goBack, todo, onRemove, onSave}) => {
     const [modal, setModal] = useState(false);
+
+    const saveHandler = title => {
+        onSave(todo.id, title);
+        setModal(false);
+    };
 
     return (
         <View>
-            <EditModal visible={modal} onCansel={() => setModal(false)}/>
+            <EditModal
+                value={todo.title}
+                visible={modal}
+                onCansel={() => setModal(false)}
+                onSave={saveHandler}
+            />
 
             <AppCart style={styles.cart}>
                 <Text style={styles.title}>{todo.title}</Text>

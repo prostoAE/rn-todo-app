@@ -1,14 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View, Text, Button} from 'react-native';
 import {THEME} from "../theme";
 import {AppCart} from "../components/ui/AppCart";
+import {EditModal} from "../components/EditModal";
 
 export const TodoScreen = ({goBack, todo, onRemove}) => {
+    const [modal, setModal] = useState(false);
+
     return (
         <View>
+            <EditModal visible={modal} onCansel={() => setModal(false)}/>
+
             <AppCart style={styles.cart}>
                 <Text style={styles.title}>{todo.title}</Text>
-                <Button title='Ред.'/>
+                <Button title='Ред.' onPress={() => setModal(true)}/>
             </AppCart>
 
             <View style={styles.buttons}>

@@ -79,6 +79,7 @@ export default function App() {
 
   if (todoId) {
     const selectedTodo = todos.find(todo => todo.id === todoId);
+
     content = (
       <TodoScreen
         onRemove={removeTodo}

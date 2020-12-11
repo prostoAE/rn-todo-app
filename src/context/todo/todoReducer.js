@@ -7,10 +7,12 @@ const handlers = {
       title
     }]
   }),
+
   [REMOVE_TODO]: (state, {id}) => ({
     ...state,
     todos: state.todos.filter(todo => todo.id !== id)
   }),
+
   [UPDATE_TODO]: (state, {id, title}) => ({
     ...state,
     todos: state.todos.map(todo => {
@@ -20,6 +22,7 @@ const handlers = {
       return todo;
     })
   }),
+
   DEFAULT: state => state
 };
 

@@ -35,14 +35,16 @@ export const TodoState = ({children}) => {
   };
 
   const fetchTodos = async () => {
+    showLoader();
     const responde = await fetch('https://rn-todo-app-a6b82-default-rtdb.firebaseio.com/todos.json', {
       method: 'GET',
       headers: {'Content-Type': 'application/json'}
     });
     const data = await responde.json();
-    console.log('Fetch data', data);
+    // console.log('Fetch data', data);
     const todos = Object.keys(data).map(key => ({...data[key], id: key}));
-    dispatch({type: FETCH_TODOS, todos})
+    dispatch({type: FETCH_TODOS, todos});
+    hideLoader();
   };
 
   const removeTodo = id => {
